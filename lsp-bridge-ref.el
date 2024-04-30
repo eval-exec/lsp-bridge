@@ -440,10 +440,11 @@ user more freedom to use rg with special arguments."
 
   (switch-to-buffer lsp-bridge-ref-buffer)
   (goto-char (point-min))
-
-  (fit-window-to-buffer
-   (get-buffer-window lsp-bridge-ref-buffer 'visible)
-   20))
+  (let ((ref-window (get-buffer-window lsp-bridge-ref-buffer 'visible) ))
+	(set-window-parameter ref-window 'split-window nil)
+	(fit-window-to-buffer ref-window 20)
+	)
+  )
 
 (defun lsp-bridge-ref-find-next-position (regexp)
   (save-excursion
