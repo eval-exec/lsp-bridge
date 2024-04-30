@@ -426,12 +426,24 @@ user more freedom to use rg with special arguments."
   (if lsp-bridge-ref-delete-other-windows
       (delete-other-windows))
 
-  ;; Set `window-resize-pixelwise' with non-nil will cause `split-window' failed.
-  (let (window-resize-pixelwise)
-    (split-window nil (* 0.618 (window-pixel-height)) nil t))
-  (other-window 1)
+  (let ((ref-window (get-buffer-window lsp-bridge-ref-buffer 'visible)))
+	(if ref-window
+		(select-window ref-window)
+	  (progn
+		;; Set `window-resize-pixelwise' with non-nil will cause `split-window' failed.
+		(let (window-resize-pixelwise)
+		  (split-window nil (* 0.618 (window-pixel-height)) nil t))
+		(other-window 1)
+		)
+	  ))
+
+
   (switch-to-buffer lsp-bridge-ref-buffer)
-  (goto-char (point-min)))
+  (goto-char (point-min))
+
+  (fit-window-to-buffer
+   (get-buffer-window lsp-bridge-ref-buffer 'visible)
+   20))
 
 (defun lsp-bridge-ref-find-next-position (regexp)
   (save-excursion

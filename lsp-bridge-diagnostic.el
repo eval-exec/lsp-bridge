@@ -215,7 +215,7 @@ You can set this value with `(2 3 4) if you just need render error diagnostic."
                                             (overlay-put overlay
                                                          'display-message
                                                          (if (> diagnostic-number 1)
-                                                             (format "[%s:%s] %s" (1+ diagnostic-index) diagnostic-number message)
+                                                             (format "(%s/%s) %s" (1+ diagnostic-index) diagnostic-number message)
                                                            message))
                                             (push overlay lsp-bridge-diagnostic-overlays))))
 
