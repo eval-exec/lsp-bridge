@@ -442,7 +442,7 @@ user more freedom to use rg with special arguments."
   (goto-char (point-min))
   (let ((ref-window (get-buffer-window lsp-bridge-ref-buffer 'visible) ))
 	(set-window-parameter ref-window 'split-window nil)
-	(fit-window-to-buffer ref-window 20)
+	(fit-window-to-buffer ref-window 10)
 	)
   )
 

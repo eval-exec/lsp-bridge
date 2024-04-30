@@ -11,7 +11,7 @@
     }
   },
   "initializationOptions": {
-    "enableExperimental": false,
+    "enableExperimental": true,
     "diagnostics": {
       "enable": true
     },
@@ -21,7 +21,7 @@
       "runBuildScripts": true,
       "loadOutDirsFromCheck": true,
       "useRustcWrapperForBuildScripts": true,
-      "autoreload": false,
+      "autoreload": true,
       "buildScripts": {
         "enable": true,
         "rebuildOnSave": false,
